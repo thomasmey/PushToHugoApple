@@ -2,16 +2,16 @@ import Foundation
 
 func createBlogPost(title: String, url: String, date: Date, extras: [String:String]) -> String {
 
-	let bp = "---\n" +
+	var bp = "---\n" +
 		"title: \(title)\n" +
 		"type: post\n" +
-		"date: \(date)\n" +
-//		for(Map.Entry<String, String> e : extras.entrySet()) {
-//			sb.append(e.getKey()).append(": ").append(e.getValue()).append("\n");
-//		}
-//		sb.append("\n")
-		"---\n" +
-		"<\(url)>"
+		"date: \(date)\n"
+
+	for (k,v) in extras {
+		bp += "\(k): \(v)\n"
+	}
+	bp += "\n---\n" +
+	"<\(url)>\n"
 	return bp
 }
 
